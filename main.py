@@ -26,16 +26,14 @@ class Sprite:
             self.y += 3
 
     def goUp(self):
-        '''for i in range(10):
-            self.draw(self.x,self.y)
-            self.y-=2'''
+
         self.y -= 13
 
 class Obstacle:
     def __init__(self):
         self.x = 800
         self.topy = 0
-        self.height = random.randrange(100, 300)
+        self.height = random.randrange(0, 400)
         self.width = 30
         self.bottomy = self.height + 200
         self.color = (0, 255, 0)
@@ -61,18 +59,13 @@ while not done and not (obstacle.collide(sprite) or obstacle1.collide(sprite)):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             done = True
-    #if (x + 30 >= topx and x <= topx + 30 and (y < height or y + 30 > bottomy)):
-    #    print(x, y, topx, bottomy, )
-    #    break
-
+            
     pressed = pygame.key.get_pressed()
     if pressed[pygame.K_SPACE]:
         if (sprite.y > 0):
             # y -= 20
             sprite.goUp()
-            # if pressed[pygame.K_DOWN]: y += 3
-    # if pressed[pygame.K_LEFT]: x -= 3
-    # if pressed[pygame.K_RIGHT]: x += 3i
+
     sprite.falldown()
     screen.fill((0, 0, 0))
     if(obstacle1.x < 0):
@@ -84,8 +77,6 @@ while not done and not (obstacle.collide(sprite) or obstacle1.collide(sprite)):
     obstacle1.draw()
     obstacle.move()
     obstacle.draw()
-
-
 
     pygame.display.flip()
     clock.tick(60)
